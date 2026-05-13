@@ -81,7 +81,7 @@ def _resolve_agent_class(agent_class: str) -> type[BaseAgent]:
 
 
 _BLOCKED_YAML_KEYS = frozenset({"args"})
-_ENFORCE_DENYLIST = False
+_ENFORCE_DENYLIST = True
 
 
 def _set_enforce_denylist(value: bool) -> None:
