@@ -80,9 +80,16 @@ def _resolve_agent_class(agent_class: str) -> type[BaseAgent]:
   )
 
 _BLOCKED_MODULES = frozenset({
-    "os", "sys", "subprocess", "builtins",
-    "importlib", "shutil", "socket",
-    "ctypes", "pickle", "marshal",
+    "os",
+    "sys",
+    "subprocess",
+    "builtins",
+    "importlib",
+    "shutil",
+    "socket",
+    "ctypes",
+    "pickle",
+    "marshal",
 })
 _BLOCKED_YAML_KEYS = frozenset({
     "args",
@@ -227,9 +234,7 @@ def resolve_code_reference(code_config: CodeConfig) -> Any:
     raise ValueError("Invalid CodeConfig.")
   top_level = code_config.name.split(".")[0]
   if top_level in _BLOCKED_MODULES:
-    raise ValueError(
-        f"Module '{top_level}' is not allowed in code references."
-    )
+    raise ValueError(f"Module '{top_level}' is not allowed in code references.")
   module_path, obj_name = code_config.name.rsplit(".", 1)
   module = importlib.import_module(module_path)
   obj = getattr(module, obj_name)
