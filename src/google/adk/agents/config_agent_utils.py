@@ -102,7 +102,8 @@ _BLOCKED_YAML_KEYS = frozenset({
     "output_schema",
 })
 _ENFORCE_DENYLIST = True
-
+def _load_config_from_path(config_path: str) -> AgentConfig:
+  """Load an agent's configuration from a YAML file.
   Args:
     config_path: Path to the YAML config file. Both relative and absolute
       paths are accepted.
